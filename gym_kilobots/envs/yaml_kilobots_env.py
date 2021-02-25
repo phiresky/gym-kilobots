@@ -81,7 +81,8 @@ class EnvConfiguration(yaml.YAMLObject):
         self.height = height
         self.resolution = resolution
         self.objects = [self.ObjectConfiguration(**obj) for obj in objects]
-        self.light = self.LightConfiguration(**light)
+        if light is not None:
+            self.light = self.LightConfiguration(**light)
         self.kilobots = self.KilobotsConfiguration(**kilobots)
 
     def __eq__(self, other):
